@@ -1,0 +1,48 @@
+{% extends 'social_base.djhtml' %}
+
+{% block title %}Account Page{% endblock %}
+
+{% block middle_column %}
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <h6 class="w3-opacity">Change Password</h6>
+                        <form method="post" id="create_form" action="{% url 'social:account_view' %}">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input type="submit" value="Change Password" />
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-row-padding">
+        <div class="w3-col m12">
+            <div class="w3-card w3-round w3-white">
+                <div class="w3-container w3-padding">
+                    <h6 class="w3-opacity">Update Info</h6>
+                    <form method="post" id="create_form" action="{% url 'social:account_view' %}">
+                        {% csrf_token %}
+                        <div class="fieldWrapper"; style="margin: 5px">
+                            <label for="{{ user_info_form.birthday.id_for_label }}">Birthday:</label>
+                            {{ user_info_form.birthday }}
+                        </div>
+                        <div class="fieldWrapper"; style="margin: 5px">
+                            <label for="{{ user_info_form.location.id_for_label }}">Location:</label>
+                            {{ user_info_form.location }}
+                        </div>
+                        <div class="fieldWrapper"; style="margin: 5px">
+                            <label for="{{ user_info_form.employment.id_for_label }}">Employment:</label>
+                            {{ user_info_form.employment }}
+                        </div>
+                        <div class="fieldWrapper"; style="margin: 5px">
+                            <label for="{{ user_info_form.interests.id_for_label }}">Add Interest: </label>
+                            {{ user_info_form.interests }}
+                        </div>
+                    <input type="submit" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
